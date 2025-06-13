@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-function InternalLink({ to, children }) {
+function InternalLink({ to, children, className = "" }) {
 	return (
 		<Link
 			to={to}
-			className="px-4 py-2 text-sm font-medium text-white hover:underline"
+			className={`inline-block font-medium hover:underline ${className}`}
 		>
 			{children}
 		</Link>

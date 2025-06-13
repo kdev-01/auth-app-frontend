@@ -2,7 +2,7 @@ import { useScrolled } from "@globals/hooks";
 import { ImageLink } from "@globals/components";
 import { InternalLink } from "@globals/components";
 import Menu from "./Menu";
-import menuItems from "../menuItems";
+import menuItems from "../data/menuItems";
 import logo from "/logo.png";
 
 function NavBar() {
@@ -14,9 +14,11 @@ function NavBar() {
 				scrolled ? "bg-white/10 backdrop-blur-md" : "bg-transparent"
 			} `}
 		>
-			<ImageLink to="/" src={logo} alt="Logo FDPEN" />
+			<ImageLink to="/" src={logo} alt="Logo FDPEN" className="w-14" />
 			<Menu items={menuItems} />
-			<InternalLink to="/login">Iniciar sesión</InternalLink>
+			<InternalLink to="/login" className="px-4 py-2 text-white">
+				Iniciar sesión
+			</InternalLink>
 		</nav>
 	);
 }

@@ -9,7 +9,7 @@ function ExternalLink({
 			href={href}
 			target={target}
 			rel={rel}
-			className="px-4 py-2 text-sm font-medium text-white hover:underline"
+			className="px-4 py-2 font-medium text-white hover:underline"
 		>
 			{children}
 		</a>
