@@ -1,6 +1,6 @@
+import banner from "@assets/banner.png";
 import { BackgroundImage } from "@globals/components";
 import NavBar from "./NavBar";
-import banner from "@assets/banner.png";
 
 function Header() {
 	return (
