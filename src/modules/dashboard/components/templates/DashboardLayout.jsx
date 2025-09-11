@@ -1,6 +1,7 @@
 import { useHover } from "@globals/hooks";
 import { SidebarProvider } from "@modules/dashboard/context/SidebarContext";
 import useSidebarContext from "@modules/dashboard/context/useSidebarContext";
+import { Outlet } from "react-router-dom";
 import DashboardHeader from "../organisms/DashboardHeader";
 import DashboardSidebar from "../organisms/DashboardSidebar";
 
@@ -20,7 +21,11 @@ function Layout() {
 			>
 				<DashboardHeader />
 
-				<div className="p-4 mx-auto max-w-(1536px) md:p-6"></div>
+				<div className="flex flex-col h-[calc(100vh-69px)] overflow-hidden p-4 md:p-6">
+					<div className="flex-1 overflow-auto mx-auto w-full max-w-[1536px]">
+						<Outlet />
+					</div>
+				</div>
 			</div>
 		</div>
 	);

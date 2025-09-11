@@ -1,4 +1,4 @@
-import httpClient from "@globals/services/httpClient";
+import { httpClient } from "@globals/services";
 import { createContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
@@ -6,13 +6,16 @@ const AuthContext = createContext();
 function AuthProvider({ children }) {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const getUser = () => httpClient.get("auth/me/permissions");
+	const getUser = () =>
+		httpClient.get("auth/me/permissions", {
+			meta: { suppressErrorToast: true },
+		});
 
 	useEffect(() => {
 		const verifySession = async () => {
 			try {
 				const res = await getUser();
-				setUser({ ...res.data, is_logged: true });
+				setUser({ ...res, is_logged: true });
 			} catch (err) {
 				setUser({ is_logged: false });
 			} finally {

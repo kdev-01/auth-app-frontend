@@ -1,8 +1,20 @@
-function Button({ type = "button", onClick, children, className = "" }) {
+import { Bouncy } from "ldrs/react";
+
+function Button({
+	type = "button",
+	onClick,
+	children,
+	isLoading = false,
+	title = "",
+	className = "",
+	...rest
+}) {
 	return (
 		<button
 			type={type}
 			onClick={onClick}
+			disabled={isLoading}
+			title={title}
 			className={`
 				cursor-pointer
 				bg-blue-900 text-neutral-50
@@ -16,8 +28,9 @@ function Button({ type = "button", onClick, children, className = "" }) {
 				hover:shadow-xl
 				${className}
 			`}
+			{...rest}
 		>
-			{children}
+			{isLoading ? <Bouncy size="25" speed="1.75" color="White" /> : children}
 		</button>
 	);
 }

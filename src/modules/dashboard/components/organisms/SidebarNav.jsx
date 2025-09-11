@@ -1,27 +1,32 @@
+import { AuthContext } from "@globals/contexts";
 import useSidebarSubmenu from "@modules/dashboard/hooks/useSidebarSubmenu";
+import { menuIconMap } from "@modules/dashboard/utils/menuIconMap";
+import { useContext } from "react";
 import MenuButton from "../molecules/MenuButton";
 import MenuLink from "../molecules/MenuLink";
 import SubmenuList from "../molecules/SubmenuList";
 
-function SidebarNav({ navItems, visible }) {
+function SidebarNav({ visible }) {
+	const { user } = useContext(AuthContext);
 	const { openSubmenu, subMenuHeight, subMenuRefs, toggleSubmenu } =
-		useSidebarSubmenu(navItems);
+		useSidebarSubmenu(user.menu);
 	const isPathActive = (path) => location.pathname === path;
 
 	return (
 		<nav>
 			<ul className="flex flex-col gap-4">
-				{navItems.map((item, index) => {
+				{user.menu.map((item, index) => {
 					const isOpen = openSubmenu === index;
+					const icon = menuIconMap[item.name];
 
 					return (
 						<li key={item.path}>
-							{item.subItems ? (
+							{item.sub_items ? (
 								<>
 									<MenuButton
 										onClick={() => toggleSubmenu(index)}
 										isOpen={isOpen}
-										icon={item.icon}
+										icon={icon}
 										label={item.name}
 										visible={visible}
 									/>
@@ -39,7 +44,7 @@ function SidebarNav({ navItems, visible }) {
 								<MenuLink
 									to={item.path}
 									active={isPathActive(item.path)}
-									icon={item.icon}
+									icon={icon}
 									label={item.name}
 									visible={visible}
 								/>

@@ -7,24 +7,28 @@ const httpClient = axios.create({
 });
 
 httpClient.interceptors.response.use(
-	(res) => res,
+	(res) => {
+		if (res.status === 204) return null;
+		return res.data ?? null;
+	},
 	(err) => {
-		const ignorePaths = ["auth/me/permissions"];
-		const reqPath = err?.config?.url || "";
+		const cfg = err?.config || {};
+		const suppress = cfg?.meta?.suppressErrorToast === true;
 
-		if (!ignorePaths.includes(reqPath)) {
-			const data = err?.response?.data;
+		const body = err?.response?.data;
+		const message =
+			body?.message ||
+			body?.errors?.[0]?.msg ||
+			err.message ||
+			"Ocurrió un error inesperado.";
 
-			const message =
-				data?.errors?.[0]?.msg ||
-				data?.message ||
-				err.message ||
-				"Ocurrió un error inesperado.";
+		if (!suppress) toast.error(message);
 
-			toast.error(message);
-		}
-
-		return Promise.reject(err);
+		const enriched = new Error(message);
+		enriched.status = err?.response?.status;
+		enriched.errors = body?.errors;
+		enriched.code = body?.code;
+		throw enriched;
 	},
 );
 

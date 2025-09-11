@@ -1,4 +1,4 @@
-import login from "@assets/login.jpeg";
+import loginImg from "@assets/login.jpeg";
 import {
 	BackgroundImage,
 	Button,
@@ -11,9 +11,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import logo from "/logo.png";
-import { authLogin } from "../services/authService";
+import useLogin from "../hooks/useLogin";
 import { loginDataValidation } from "../utils/userValidations";
 
 function Login() {
@@ -24,22 +23,9 @@ function Login() {
 	} = useForm({
 		resolver: zodResolver(loginDataValidation),
 	});
-	const { user, setUser } = useContext(AuthContext);
-	const navigate = useNavigate();
+	const { login, loading } = useLogin();
+	const { user } = useContext(AuthContext);
 	if (user?.is_logged) return <Navigate to="/dashboard" replace />;
-
-	const onSubmit = async (data) => {
-		try {
-			const res = await authLogin(data);
-			setUser({
-				is_logged: true,
-				...res,
-			});
-			navigate("/dashboard", { replace: true });
-		} catch (error) {
-			throw error;
-		}
-	};
 
 	return (
 		<main className="grid grid-cols-[3fr_2fr] h-screen overflow-hidden">
@@ -48,12 +34,12 @@ function Login() {
 				<h1 className="text-2xl font-semibold mb-3">Inicio de sesión</h1>
 
 				<form
-					onSubmit={handleSubmit(onSubmit)}
+					onSubmit={handleSubmit(login)}
 					className="w-full max-w-sm flex flex-col gap-2"
 				>
 					<InputField
 						type="text"
-						placeholder="kevin.tapia@gmail.com"
+						placeholder="nombre.apellido@gmail.com"
 						name="email"
 						register={register}
 						error={errors}
@@ -72,13 +58,13 @@ function Login() {
 
 					<InternalLink to="/">¿Olvidaste tu contraseña?</InternalLink>
 
-					<Button type="submit" className="mt-5">
+					<Button type="submit" isLoading={loading} className="mt-5">
 						Iniciar sesión
 					</Button>
 				</form>
 			</section>
 
-			<BackgroundImage src={login} alt="Evento de Basket Femenino" />
+			<BackgroundImage src={loginImg} alt="Evento de Basket Femenino" />
 		</main>
 	);
 }

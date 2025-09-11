@@ -1,4 +1,4 @@
-export function buildFormData(jsonData, files = {}) {
+function buildFormData(jsonData, files = {}) {
 	const formData = new FormData();
 
 	formData.append("data", JSON.stringify(jsonData));
@@ -9,3 +9,5 @@ export function buildFormData(jsonData, files = {}) {
 
 	return formData;
 }
+
+export default buildFormData;

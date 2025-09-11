@@ -1,7 +1,5 @@
-import httpClient from "@globals/services/httpClient";
+import { httpClient } from "@globals/services";
 
-export const authLogin = async (data) => {
-	const res = await httpClient.post("auth/login", data);
-	console.log(res);
-	return res.data;
+export const authLogin = async (payload) => {
+	return await httpClient.post("auth/login", payload);
 };

@@ -1,4 +1,4 @@
-import TextInput from "../atoms/TextInput";
+import TextInput from "./TextInput";
 
 function InputField({
 	children,
@@ -9,7 +9,7 @@ function InputField({
 	error,
 }) {
 	return (
-		<div>
+		<>
 			<label className="font-medium">
 				{children}
 				<TextInput
@@ -26,7 +26,7 @@ function InputField({
 					<span className="text-red-600 text-xs">{error[name]?.message}</span>
 				)}
 			</div>
-		</div>
+		</>
 	);
 }
 

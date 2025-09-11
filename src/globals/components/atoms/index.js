@@ -1,4 +1,14 @@
 export { default as BackgroundImage } from "./BackgroundImage";
+export { default as Avatar } from "./Avatar";
 export { default as ImageLink } from "./ImageLink";
 export { default as InternalLink } from "./InternalLink";
+export { default as ExternalLink } from "./ExternalLink";
+export { default as IconButton } from "./IconButton";
 export { default as Button } from "./Button";
+export { default as TableBody } from "./TableBody";
+export { default as TableHeader } from "./TableHeader";
+export { default as ProtectedRoute } from "./ProtectedRoute";
+export { default as ToolTip } from "./ToolTip";
+export { default as ModalBackdrop } from "./ModalBackdrop";
+export { default as BooleanCell } from "./BooleanCell";
+export { default as StatusBadge } from "./StatusBadge";

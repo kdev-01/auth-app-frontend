@@ -1,3 +1,16 @@
 export { default as useScrolled } from "./useScrolled";
 export { default as useHover } from "./useHover";
 export { default as useMobile } from "./useMobile";
+export { default as useClickOutside } from "./useClickOutside";
+export { default as useDropdownPosition } from "./useDropdownPosition";
+export { default as useFloatingMenu } from "./useFloatingMenu";
+export { default as useSearchFilter } from "./useSearchFilter";
+export { default as useEscapeKey } from "./useEscapeKey";
+export { default as useBodyScrollLock } from "./useBodyScrollLock";
+export { default as useModalBehavior } from "./useModalBehavior";
+export { default as useConfirmDialog } from "./useConfirmDialog";
+export { default as useApiQuery } from "./useApiQuery";
+export { default as useOptimisticAdd } from "./useOptimisticAdd";
+export { default as useOptimisticDelete } from "./useOptimisticDelete";
+export { default as useOptimisticUpdate } from "./useOptimisticUpdate";
+export { default as useFilters } from "./useFilters";
