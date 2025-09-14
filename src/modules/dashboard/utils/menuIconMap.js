@@ -7,9 +7,9 @@ import {
 
 export const menuIconMap = {
 	Inicio: LuLayoutGrid,
-	Usuarios: LuCircleUser,
+	Comunidad: LuCircleUser,
 	"Instituciones educativas": LuUniversity,
-	Eventos: LuCalendarDays,
+	Torneos: LuCalendarDays,
 	//Estudiantes: GraduationCapIcon,
 	//Eventos: CalendarIcon,
 	//Resultados: BarChartIcon,

@@ -9,7 +9,7 @@ function useSidebarSubmenu(navItems) {
 
 	useEffect(() => {
 		const index = navItems.findIndex((item) =>
-			(item.subItems || []).some((sub) => sub.path === location.pathname),
+			(item.children || []).some((sub) => sub.path === location.pathname),
 		);
 		setOpenSubmenu(index !== -1 ? index : null);
 	}, [location.pathname]);
