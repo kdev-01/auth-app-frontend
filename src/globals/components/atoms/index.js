@@ -12,3 +12,4 @@ export { default as ToolTip } from "./ToolTip";
 export { default as ModalBackdrop } from "./ModalBackdrop";
 export { default as BooleanCell } from "./BooleanCell";
 export { default as StatusBadge } from "./StatusBadge";
+export { default as InfoItem } from "./InfoItem";

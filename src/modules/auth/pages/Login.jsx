@@ -35,7 +35,7 @@ function Login() {
 
 				<form
 					onSubmit={handleSubmit(login)}
-					className="w-full max-w-sm flex flex-col gap-2"
+					className="w-full max-w-sm flex flex-col gap-1"
 				>
 					<InputField
 						type="text"

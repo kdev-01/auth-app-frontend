@@ -7,7 +7,7 @@ import InstitutionTable from "../components/molecules/InstitutionTable";
 import AddInstitutionModal from "../components/organisms/AddInstitutionModal";
 import UpdateInstitutionModal from "../components/organisms/UpdateInstitutionModal";
 import { getAllInstitutions } from "../services/institutionService";
-import { mapAllInstitutions } from "../utils/mappers";
+import { mapInstitutions } from "../utils/mappers";
 
 function InstitutionManagement() {
 	const [modalOpen, setModalOpen] = useState(false);
@@ -17,7 +17,7 @@ function InstitutionManagement() {
 	const { data: institutions = [], isLoading } = useApiQuery({
 		key: ["institutions"],
 		queryFn: getAllInstitutions,
-		select: mapAllInstitutions,
+		select: mapInstitutions,
 	});
 
 	const { search, setSearch, filteredItems } = useSearchFilter(

@@ -10,16 +10,25 @@ import { mapAllUsers } from "../utils/mappers";
 
 function UserManagement() {
 	const [modalOpen, setModalOpen] = useState(false);
+	const [editModalOpen, setEditModalOpen] = useState(false);
+	const [editingItem, setEditingItem] = useState(null);
+
 	const { data: users = [], isLoading } = useApiQuery({
 		key: ["users"],
 		queryFn: getAllUsers,
 		select: mapAllUsers,
 	});
+
 	const { search, setSearch, filteredItems } = useSearchFilter(
 		users,
 		(user) =>
 			`${user.firstName} ${user.lastName} ${user.nationalID} ${user.email}`,
 	);
+
+	const handleEditRow = (row) => {
+		setEditingItem(row);
+		setEditModalOpen(true);
+	};
 
 	return (
 		<>
@@ -36,7 +45,11 @@ function UserManagement() {
 				}
 			>
 				{users.length > 0 ? (
-					<UserTable data={filteredItems} isLoading={isLoading} />
+					<UserTable
+						data={filteredItems}
+						isLoading={isLoading}
+						onEditRow={handleEditRow}
+					/>
 				) : (
 					<p className="py-4 text-center text-gray-500">No hay usuarios.</p>
 				)}

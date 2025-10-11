@@ -20,7 +20,7 @@ function SidebarNav({ visible }) {
 					const icon = menuIconMap[item.name];
 
 					return (
-						<li key={item.path}>
+						<li key={item.name}>
 							{item.children ? (
 								<>
 									<MenuButton

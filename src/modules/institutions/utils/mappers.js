@@ -4,7 +4,7 @@ const statusMap = {
 	sanctioned: "Sancionado",
 };
 
-export const mapAllInstitutions = (rows) =>
+export const mapInstitutions = (rows) =>
 	Array.isArray(rows)
 		? rows.map((i) => ({
 				id: i.institution_id,
