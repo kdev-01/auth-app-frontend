@@ -15,7 +15,15 @@ function AuthProvider({ children }) {
 		const verifySession = async () => {
 			try {
 				const res = await getUser();
-				setUser({ ...res.data, is_logged: true });
+				const userData = {
+					...res.data,
+					is_logged: true,
+					session: {
+						...res.data?.session,
+						menu: res.data?.session?.menu || [],
+					},
+				};
+				setUser(userData);
 			} catch (err) {
 				setUser({ is_logged: false });
 			} finally {

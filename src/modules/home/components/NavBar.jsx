@@ -1,7 +1,7 @@
 import { ImageLink } from "@globals/components";
 import { InternalLink } from "@globals/components";
 import { useScrolled } from "@globals/hooks";
-import logo from "/logo.png";
+import logo from "/Logo.png";
 import navItems from "../data/navItems";
 import HomeMenu from "./HomeMenu";
 

@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-function useSidebarSubmenu(navItems) {
+function useSidebarSubmenu(navItems = []) {
 	const location = useLocation();
 	const [openSubmenu, setOpenSubmenu] = useState(null);
 	const [subMenuHeight, setSubMenuHeight] = useState({});
 	const subMenuRefs = useRef({});
 
 	useEffect(() => {
+		if (!navItems || navItems.length === 0) return;
+		
 		const index = navItems.findIndex((item) =>
 			(item.children || []).some((sub) => sub.path === location.pathname),
 		);
 		setOpenSubmenu(index !== -1 ? index : null);
-	}, [location.pathname]);
+	}, [location.pathname, navItems]);
 
 	useEffect(() => {
 		if (openSubmenu === null) return;

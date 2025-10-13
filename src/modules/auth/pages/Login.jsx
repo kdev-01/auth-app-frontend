@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import logo from "/logo.png";
+import logo from "/Logo.png";
 import useLogin from "../hooks/useLogin";
 import { loginDataValidation } from "../utils/userValidations";
 

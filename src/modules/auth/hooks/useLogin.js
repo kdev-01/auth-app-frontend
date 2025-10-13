@@ -12,7 +12,15 @@ function useLogin() {
 		try {
 			setLoading(true);
 			const res = await authLogin(payload);
-			setUser({ is_logged: true, ...res });
+			const userData = {
+				...res.data,
+				is_logged: true,
+				session: {
+					...res.data?.session,
+					menu: res.data?.session?.menu || [],
+				},
+			};
+			setUser(userData);
 			navigate("/dashboard", { replace: true });
 		} catch (err) {
 			// Error already handled by the interceptor; no further action required here.

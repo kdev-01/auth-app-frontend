@@ -8,14 +8,15 @@ import SubmenuList from "../molecules/SubmenuList";
 
 function SidebarNav({ visible }) {
 	const { user } = useContext(AuthContext);
+	const menuItems = user?.session?.menu || [];
 	const { openSubmenu, subMenuHeight, subMenuRefs, toggleSubmenu } =
-		useSidebarSubmenu(user.session?.menu);
+		useSidebarSubmenu(menuItems);
 	const isPathActive = (path) => location.pathname === path;
 
 	return (
 		<nav>
 			<ul className="flex flex-col gap-4">
-				{user?.session?.menu?.map((item, index) => {
+				{menuItems.map((item, index) => {
 					const isOpen = openSubmenu === index;
 					const icon = menuIconMap[item.name];
 

@@ -1,5 +1,5 @@
 import { ImageLink } from "@globals/components";
-import logo from "/logo.png";
+import logo from "/Logo.png";
 
 function SidebarHeader({ isSidebarCollapsed, visible }) {
 	return (
