@@ -9,7 +9,7 @@ function useSidebarSubmenu(navItems = []) {
 
 	useEffect(() => {
 		if (!navItems || navItems.length === 0) return;
-		
+
 		const index = navItems.findIndex((item) =>
 			(item.children || []).some((sub) => sub.path === location.pathname),
 		);

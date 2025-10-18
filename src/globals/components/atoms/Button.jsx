@@ -1,21 +1,27 @@
 import { Bouncy } from "ldrs/react";
+import { forwardRef } from "react";
 
-function Button({
-	type = "button",
-	onClick,
-	children,
-	isLoading = false,
-	title = "",
-	className = "",
-	...rest
-}) {
-	return (
-		<button
-			type={type}
-			onClick={onClick}
-			disabled={isLoading}
-			title={title}
-			className={`
+const Button = forwardRef(
+	(
+		{
+			type = "button",
+			onClick,
+			children,
+			isLoading = false,
+			title = "",
+			className = "",
+			...rest
+		},
+		ref,
+	) => {
+		return (
+			<button
+				ref={ref}
+				type={type}
+				onClick={onClick}
+				disabled={isLoading}
+				title={title}
+				className={`
 				cursor-pointer
 				bg-blue-900 text-neutral-50
 				px-5 py-2.5
@@ -28,11 +34,14 @@ function Button({
 				hover:shadow-xl
 				${className}
 			`}
-			{...rest}
-		>
-			{isLoading ? <Bouncy size="25" speed="1.75" color="White" /> : children}
-		</button>
-	);
-}
+				{...rest}
+			>
+				{isLoading ? <Bouncy size="25" speed="1.75" color="White" /> : children}
+			</button>
+		);
+	},
+);
+
+Button.displayName = "Button";
 
 export default Button;

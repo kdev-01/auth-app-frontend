@@ -6,8 +6,8 @@ const API = {
 };
 
 // GET
-export const getAllInstitutions = async () => {
-	const body = await httpClient.get(API.INSTITUTIONS);
+export const getAllInstitutions = async (params = {}) => {
+	const body = await httpClient.get(API.INSTITUTIONS, { params });
 	return body?.data ?? [];
 };
 

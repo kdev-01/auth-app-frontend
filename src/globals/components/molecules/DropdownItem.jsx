@@ -19,7 +19,12 @@ function DropdownItem({ children, to, onClick, icon: Icon, danger = false }) {
 					{content}
 				</Link>
 			) : (
-				<button onClick={onClick} role="menuitem" className={baseClasses}>
+				<button
+					onClick={onClick}
+					role="menuitem"
+					className={baseClasses}
+					type="button"
+				>
 					{content}
 				</button>
 			)}

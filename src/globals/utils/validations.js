@@ -4,6 +4,7 @@ const collapseSpaces = (s) => s.replace(/\s+/g, " ").trim();
 const ONLYLETTERS = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]+$/;
 
 // Validations for user entity
+
 export const emailValidations = z
 	.string({
 		required_error: "El correo es un campo obligatorio.",
@@ -26,6 +27,18 @@ export const passwordValidations = z
 		message: "Debe contener al menos una mayúscula, una minúscula y un número.",
 	});*/
 
+export const nationalIDValidations = z
+	.string({
+		required_error: "La cédula de identidad es un campo obligatorio.",
+		invalid_type_error: "La cédula de identidad debe ser una cadena de texto.",
+	})
+	.min(10, {
+		message: "La cédula de identidad debe tener al menos 10 caracteres.",
+	})
+	.max(10, {
+		message: "La cédula de identidad no debe exceder los 10 caracteres.",
+	});
+
 export const firstNameValidations = z
 	.string({ required_error: "El nombre es obligatorio." })
 	.min(1, "El nombre no puede estar vacío.")
@@ -41,6 +54,15 @@ export const lastNameValidations = z
 	.max(50, "El apellido no debe superar los 50 caracteres.")
 	.regex(ONLYLETTERS, {
 		message: "El apellido solo debe contener letras y espacios.",
+	})
+	.transform(collapseSpaces);
+
+export const phoneNumberValidations = z
+	.string({ required_error: "El número de teléfono es obligatorio." })
+	.min(10, "El número de teléfono debe tener al menos 10 caracteres.")
+	.max(10, "El número de teléfono no debe exceder los 10 caracteres.")
+	.regex(/^[0-9]+$/, {
+		message: "El número de teléfono solo debe contener números.",
 	})
 	.transform(collapseSpaces);
 

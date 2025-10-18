@@ -7,7 +7,6 @@ const DropdownMenu = forwardRef(
 			<ul
 				ref={ref}
 				id={id}
-				role="menu"
 				aria-labelledby={labelledBy}
 				className="absolute w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50"
 				style={{ top: position.top, left: position.left }}

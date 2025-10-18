@@ -1,10 +1,9 @@
-import { httpClient } from "@globals/services";
+import { buildFormData, httpClient } from "@globals/services";
 
 const API = {
 	STUDENTS: "students/",
 };
 
-// GET
 export const getAllStudents = async () => {
 	return [
 		{
@@ -70,7 +69,26 @@ export const getAllStudents = async () => {
 	];
 };
 
-/*export const getAllStudents = async () => {
-	const body = await httpClient.get(API.STUDENTS);
-	return body?.data ?? [];
-};*/
+export const createStudent = async (payload) => {
+	const { photo, ...jsonData } = payload;
+	const formData = buildFormData(jsonData, { photo });
+
+	return await httpClient.post(API.STUDENTS, formData, {
+		meta: { suppressErrorToast: true },
+	});
+};
+
+export const updateStudent = async (id, payload) => {
+	const { photo, ...jsonData } = payload;
+	const formData = buildFormData(jsonData, { photo });
+
+	return await httpClient.put(`${API.STUDENTS}${id}`, formData, {
+		meta: { suppressErrorToast: true },
+	});
+};
+
+export const deleteStudent = async (id) => {
+	return await httpClient.delete(`${API.STUDENTS}${id}`, {
+		meta: { suppressErrorToast: true },
+	});
+};

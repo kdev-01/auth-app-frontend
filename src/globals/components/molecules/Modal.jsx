@@ -30,7 +30,6 @@ function Modal({
 				role="dialog"
 				aria-modal="true"
 				ref={modalRef}
-				onClick={(e) => e.stopPropagation()}
 				className={`flex flex-col gap-8 relative ${size} w-full mx-auto bg-white rounded-xl shadow-lg p-6`}
 			>
 				{showCloseButton && (

@@ -1,5 +1,4 @@
-import { Modal } from "@globals/components";
-import { InputField, SelectField } from "@globals/components";
+import { InputField, Modal, SelectField } from "@globals/components";
 import { useApiQuery, useConfirmDialog } from "@globals/hooks";
 import { normalizeOptions } from "@globals/utils";
 import { zodResolver } from "@hookform/resolvers/zod";

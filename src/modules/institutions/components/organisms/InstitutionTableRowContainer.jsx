@@ -6,7 +6,7 @@ import {
 	LuPencilRuler,
 } from "react-icons/lu";
 import { toast } from "sonner";
-import InstitutionTableRow from "../molecules/InstitutionTableRow";
+import InstitutionTableRow from "../organisms/InstitutionTableRow";
 
 function InstitutionTableRowContainer({ data, confirm, onEdit }) {
 	const { mutateAsync: unaffiliateInstitution } = useUnaffiliateInstitution();

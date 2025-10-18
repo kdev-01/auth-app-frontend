@@ -14,6 +14,7 @@ function SidebarToggleButton() {
 
 	return (
 		<button
+			type="button"
 			className="cursor-pointer flex items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg lg:h-11 lg:w-11 lg:border"
 			onClick={handleToggle}
 		>

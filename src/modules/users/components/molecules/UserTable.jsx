@@ -1,9 +1,9 @@
 import { TableBody, TableHeader } from "@globals/components";
 import { useConfirmDialog } from "@globals/hooks";
 import { userTableHeaders } from "@modules/users/data/userDataTable";
-import UserTableRow from "./UserTableRow";
+import UserTableRowContainer from "../organisms/UserTableRowContainer";
 
-function UserTable({ data = [], isLoading }) {
+function UserTable({ data = [], isLoading, onEditRow }) {
 	const { confirm, ConfirmationUI } = useConfirmDialog();
 
 	return (
@@ -15,7 +15,11 @@ function UserTable({ data = [], isLoading }) {
 					isLoading={isLoading}
 					colSpan={userTableHeaders.length}
 					RowComponent={(props) => (
-						<UserTableRow {...props} confirm={confirm} />
+						<UserTableRowContainer
+							{...props}
+							confirm={confirm}
+							onEdit={onEditRow}
+						/>
 					)}
 				/>
 			</table>

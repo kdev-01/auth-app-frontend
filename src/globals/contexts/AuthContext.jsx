@@ -1,5 +1,6 @@
 import { httpClient } from "@globals/services";
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -26,6 +27,7 @@ function AuthProvider({ children }) {
 				setUser(userData);
 			} catch (err) {
 				setUser({ is_logged: false });
+				navigate("/login", { replace: true });
 			} finally {
 				setLoading(false);
 			}
