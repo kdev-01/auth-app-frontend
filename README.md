@@ -1,6 +1,4 @@
-# 🏀 FDPEN Frontend
-
-Frontend oficial de la **Federación Deportiva Provincial Estudiantil de Napo** - Sistema de gestión integral de torneos deportivos estudiantiles.
+# 🏀 AuthApp Frontend
 
 ## 🛠 Tecnologías
 
